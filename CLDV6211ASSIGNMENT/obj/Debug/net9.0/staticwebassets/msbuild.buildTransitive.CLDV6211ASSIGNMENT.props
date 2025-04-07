@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CLDV6211ASSIGNMENT.props" />
+</Project>
