@@ -1,0 +1,43 @@
+-- Create Venue Table
+CREATE TABLE Venues (
+    Id INT PRIMARY KEY IDENTITY,
+    VenueName NVARCHAR(100) NOT NULL,
+    Location NVARCHAR(255) NOT NULL,
+    Capacity INT NOT NULL,
+    ImageUrl NVARCHAR(255)
+);
+
+-- Create Event Table
+CREATE TABLE Events (
+    Id INT PRIMARY KEY IDENTITY,
+    EventName NVARCHAR(100) NOT NULL,
+    EventDate DATE NOT NULL,
+    Description NVARCHAR(500)
+);
+
+-- Create Booking Table
+CREATE TABLE Bookings (
+    Id INT PRIMARY KEY IDENTITY,
+    EventId INT NOT NULL,
+    VenueId INT NOT NULL,
+    BookingDate DATE NOT NULL,
+    CONSTRAINT FK_Bookings_Events FOREIGN KEY (EventId) REFERENCES Events(Id),
+    CONSTRAINT FK_Bookings_Venues FOREIGN KEY (VenueId) REFERENCES Venues(Id)
+);
+
+
+--Insert sample data 
+INSERT INTO Venues (VenueName, Location, Capacity, ImageUrl) 
+VALUES ('Sierra', 'Durban', '3500', 'www.sierramsa.com'),
+('Hela', 'Cape Town', '90210', 'www.helamsa.com');
+
+
+
+
+INSERT INTO Eventss (EventName, EventDate, Description)
+VALUES ('Wasteland', '2022-08-22', 'come join us at the end of the world' ), 
+('Utopia', '2023-07-28', 'Not everything is as pretty as it seems', );
+
+INSERT INTO Bookings (EventId, VenueId, BookingDate)
+VALUES (1, 1, '2024-05-10'),
+(2, 2, '2024-06-20');
