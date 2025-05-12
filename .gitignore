@@ -1,0 +1,47 @@
+## Ignore Visual Studio temporary files, build results, and user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build output
+bin/
+obj/
+[Bb]uild/
+[Bb]ld/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Azure publish settings
+*.PublishSettings
+*.azurePubxml
+*.pubxml
+
+## Secrets and environment settings
+secrets.json
+appsettings.Development.json
+.env
+
+## Rider (JetBrains)
+.idea/
+
+## macOS & Windows junk
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+
+## NuGet packages (if you choose not to commit them)
+*.nupkg
+packages/
+
+## Resharper & other IDEs
+_ReSharper*/
+*.DotSettings.user
+
+## Others
+node_modules/
+wwwroot/lib/

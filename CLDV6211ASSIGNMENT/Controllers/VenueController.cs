@@ -24,15 +24,38 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         }
         [HttpPost]
-    public async Task<IActionResult> Create (Venues venue)
+        public async Task<IActionResult> Create(Venues venue)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(venue);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Venue created successfully";
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+            return View(venue);
+        }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var venue = await _context.Venues.FindAsync(id);
+            if (venue == null) return NotFound();
+            return View(venue);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Venues venue)
+        {
+            if (id != venue.Id) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(venue);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Venue updated successfully"
+        }
         }
     }
-}
