@@ -56,6 +56,51 @@ namespace CLDV6211ASSIGNMENT.Controllers
                 _context.Update(venue);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Venue updated successfully"
+                return RedirectToAction(nameof(Index));
+            }
+            return View(venue);
         }
+        //Step 1: confirm deletion
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var venue = await _context.Venues.FirstOrDefaultAsync(x => x.Id == id);
+            if (venue == null) return NotFound();
+            return View(venue);
+
         }
+
+        //Step 2: Perform deletion
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var venue = await _context.Venues.FindAsync(id);
+            if (venue == null) return NotFound();
+
+            var hasBookings = await _context.Bookings.AnyAsync(b => b.Id == id);
+            if (hasBookings)
+            {
+                TempData["ErrorMessage"] = "Cannot delete venue because it has existing bookings";
+                return RedirectToAction(nameof(Index));
+            }
+            _context.Venues.Remove(venue);
+            await _context.SaveChangesAsync();
+            TempData["SuccessfulMessage"] = "Venue deleted successfully";
+            return RedirectToAction(nameof(Index));
+        }
+        pubic async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var venue = _context.Venues.FirstOrDefaultAsync(s => s.Id == id);
+            if (venue == null) return NotFound();
+
+            return View(venue);
+        }
+
+
+
+    }
     }
