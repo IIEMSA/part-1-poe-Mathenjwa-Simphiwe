@@ -14,7 +14,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var events = await _context.Eventss.Include(e ==> e.Venues).ToListAsync();
+            var events = await _context.Eventss.Include(e => e.Eventss).ToListAsync();
             return View(events);
         }
         public IActionResult Create()
@@ -41,7 +41,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
             if (id == null) return NotFound();
 
             var @events = await _context.Eventss.FindAsync(id);
-            if (events == null) return NotFound();
+            if (@events == null) return NotFound();
 
             ViewData["Events"] = _context.Venues.ToList();
             return View(events);
@@ -50,59 +50,67 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Events event)
+        public async Task<IActionResult> Edit(int id, Events eventItem)
         {
-            if (id != event.Id) return NotFound();
+            if (id != eventItem.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
-                _context.Update(event);
+                _context.Update(eventItem);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Event updated successfully"
+                TempData["SuccessMessage"] = "Event updated successfully";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Events"]= _context.Venues.ToList();
-            return View(event);
+            return View(eventItem);
         }
-//Step 1: COnfirming deletion
-public async Task<IActionResult> Delete(int? id)
-{
-    if (id == null) return NotFound();
-
-    var event = await _context.Eventss
-        .Include(x=> x.Venues)
-        .FirstOrDefaultAsync(x => x.Id == id);
-    if (event == null) return NotFound();
-    return View(event);
-
-}
-[HttpPost, ActionName("Delete")]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> DeleteConfirmed(int id)
-{
-    var event = await _context.Eventss.FindAsync(id);
-    if (events == null) return NotFound();
-
-    var isBooked = await _context.Bookings.AnyAsync(b => b.Id == id);
-    if (isBooked)
-    {
-        TempData["ErrorMessage"] = "Cannot delete event because it has existing bookings";
-        return RedirectToAction(nameof(Index));
-    }
-    _context.Venues.Remove(event);
-    await _context.SaveChangesAsync();
-    TempData["SuccessfulMessage"] = "event deleted successfully";
-    return RedirectToAction(nameof(Index));
-}
-
-pubic async Task<IActionResult> Details(int? id)
+        // Step 1: Confirming deletion
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
-var event = _context.Eventss.Include(s => s.Venues).FirstOrDefaultAsync(s => s.Id == id);
-if (event == null) return NotFound();
+            var eventItem = await _context.Eventss
+                .Include(x => x.Eventss)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-return View(event);
+            if (eventItem == null) return NotFound();
+
+            return View(eventItem);
         }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var eventItem = await _context.Eventss.FindAsync(id);
+            if (eventItem == null) return NotFound();
+
+            var isBooked = await _context.Bookings.AnyAsync(b => b.EventId == id);
+            if (isBooked)
+            {
+                TempData["ErrorMessage"] = "Cannot delete event because it has existing bookings";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Eventss.Remove(eventItem);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Event deleted successfully";
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var eventItem = await _context.Eventss
+                .Include(s => s.Venues)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (eventItem == null) return NotFound();
+
+            return View(eventItem);
+        }
+
     }
 }

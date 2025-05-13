@@ -14,7 +14,7 @@ namespace CLDV6211ASSIGNMENT.Models
 
         public string Description { get; set; }
 
-        public List<Bookings> Bookings { get; set; }
-
+        public int? Venues.Id { get; set; }
+        public Venues? venues { get; set; }
     }
 }

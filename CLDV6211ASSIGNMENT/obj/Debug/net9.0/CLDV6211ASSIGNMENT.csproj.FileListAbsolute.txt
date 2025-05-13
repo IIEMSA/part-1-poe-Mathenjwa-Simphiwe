@@ -338,3 +338,15 @@ C:\Users\lab_services_student\Desktop\POE\CLDV6211ASSIGNMENT\CLDV6211ASSIGNMENT\
 C:\Users\lab_services_student\Desktop\POE\CLDV6211ASSIGNMENT\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.pdb
 C:\Users\lab_services_student\Desktop\POE\CLDV6211ASSIGNMENT\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.genruntimeconfig.cache
 C:\Users\lab_services_student\Desktop\POE\CLDV6211ASSIGNMENT\CLDV6211ASSIGNMENT\obj\Debug\net9.0\ref\CLDV6211ASSIGNMENT.dll
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.AssemblyInfoInputs.cache
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.AssemblyInfo.cs
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.csproj.CoreCompileInputs.cache
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.RazorAssemblyInfo.cache
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.RazorAssemblyInfo.cs
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.sourcelink.json
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.dll
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\refint\CLDV6211ASSIGNMENT.dll
+C:\Users\lab_services_student\Documents\GitHub\part-1-poe-Mathenjwa-Simphiwe\CLDV6211ASSIGNMENT\obj\Debug\net9.0\CLDV6211ASSIGNMENT.pdb

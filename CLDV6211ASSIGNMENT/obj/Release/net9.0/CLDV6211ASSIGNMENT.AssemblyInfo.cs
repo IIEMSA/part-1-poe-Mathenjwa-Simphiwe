@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLDV6211ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c454913104c3065282d12b2e059f0963275c9c19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c23a8cacf907c419a7c11bbc46afd891a72b17a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("CLDV6211ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CLDV6211ASSIGNMENT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

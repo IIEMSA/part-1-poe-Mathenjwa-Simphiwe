@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CLDV6211ASSIGNMENT.Models
 {
@@ -16,6 +17,10 @@ namespace CLDV6211ASSIGNMENT.Models
         public int Capacity { get; set; }
 
         public string ImageUrl { get; set; }
+
+        [NotMapped]
+
+        public IFormFile? ImageFile { get; set; }
 
         public List<Bookings> Bookings { get; set; }
 

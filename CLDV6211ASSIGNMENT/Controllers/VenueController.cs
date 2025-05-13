@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using Azure.Core;
 using CLDV6211ASSIGNMENT.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,10 +26,20 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         }
         [HttpPost]
+            
+
+
         public async Task<IActionResult> Create(Venues venue)
         {
             if (ModelState.IsValid)
             {
+                if (venue.ImageFile != null)
+                {
+                    var blobUrl = await UploadImageToBlobAsync(venue.ImageFile);
+
+                    venue.ImageFile = blobUrl;
+
+                }
                 _context.Add(venue);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Venue created successfully";
@@ -53,9 +65,16 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
             if (ModelState.IsValid)
             {
+                if (venue.ImageFile != null)
+                {
+                    var blobUrl = await UploadImageToBlobAsync(venue.ImageFile);
+
+                    venue.ImageFile = blobUrl;
+
+                }
                 _context.Update(venue);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Venue updated successfully"
+                TempData["SuccessMessage"] = "Venue updated successfully";
                 return RedirectToAction(nameof(Index));
             }
             return View(venue);
@@ -90,7 +109,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
             TempData["SuccessfulMessage"] = "Venue deleted successfully";
             return RedirectToAction(nameof(Index));
         }
-        pubic async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
 
@@ -99,8 +118,28 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
             return View(venue);
         }
+        private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
+        {
 
+           
 
+            var blobServiceClient = new BlobServiceClient(connectionString);
+            var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+            var blobClient = containerClient.GetBlobClient(Guid.NewGuid) + Path.GetExtension(imageFile.FileName);
 
+            var blobHttpHeaders = new Azure.Storage.Blobs.Models.blobHttpHeaders
+            {
+                ContentType = imageFile.ContentType
+            };
+
+            using (var stream = imageFile.OpenReadStream())
+            {
+                await blobClient.UploadAsync(stream, new Azure.Storage.Blobs.Models.BlobUploadOptions
+                {
+                    HttpHeaders=blobHttpHeaders
+                });
+            }
+            return blobClient.Uri.ToString();
+        }
     }
     }

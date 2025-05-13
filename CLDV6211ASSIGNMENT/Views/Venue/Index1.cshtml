@@ -4,14 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1
 
 <h4>Venues</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id"/>
             <div class="form-group">
                 <label asp-for="VenueName" class="control-label"></label>
                 <input asp-for="VenueName" class="form-control" />
@@ -27,6 +29,17 @@
                 <input asp-for="Capacity" class="form-control" />
                 <span asp-validation-for="Capacity" class="text-danger"></span>
             </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+               <div class="form-group" >
+                   <label>Current Image</label><br/>
+                   <img src="(Model.ImageUrl" alt="Venue Image" width="150" height="150" syle="object-fit:cover; ")"/>
+               </div>
+
+            }
+            
+
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
                 <input asp-for="ImageFile" class="form-control" type="file" />
@@ -35,6 +48,8 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
+
         </form>
     </div>
 </div>
@@ -46,3 +61,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

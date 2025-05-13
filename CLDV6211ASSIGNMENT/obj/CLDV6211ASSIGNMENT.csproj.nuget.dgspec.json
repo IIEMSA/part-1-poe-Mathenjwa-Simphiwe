@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\POE\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj": {}
+    "C:\\Users\\lab_services_student\\Documents\\GitHub\\part-1-poe-Mathenjwa-Simphiwe\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\POE\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj": {
+    "C:\\Users\\lab_services_student\\Documents\\GitHub\\part-1-poe-Mathenjwa-Simphiwe\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\POE\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Documents\\GitHub\\part-1-poe-Mathenjwa-Simphiwe\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj",
         "projectName": "CLDV6211ASSIGNMENT",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\POE\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Documents\\GitHub\\part-1-poe-Mathenjwa-Simphiwe\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\POE\\CLDV6211ASSIGNMENT\\CLDV6211ASSIGNMENT\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Documents\\GitHub\\part-1-poe-Mathenjwa-Simphiwe\\CLDV6211ASSIGNMENT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

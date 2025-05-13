@@ -30,25 +30,25 @@ namespace CLDV6211ASSIGNMENT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Bookings bookings)
         {
-            var selectedEvent = await _context.Eventss.FirstOrDefaultAsync(e.=> e.EventID == bookings.EventId);
+            var selectedEvent = await _context.Eventss.FirstOrDefaultAsync(e => e.Id == bookings.EventId);
 
             if (selectedEvent == null)
             {
                 ModelState.AddModelError("", "Selected event not found.");
-                ViewData["Events"] = _context.Event.ToList();
-                ViewData["Venues"] = _context.Venue.ToList();
-                return View(booking);
+                ViewData["Events"] = _context.Eventss.ToList();
+                ViewData["Venues"] = _context.Venues.ToList();
+                return View(bookings);
             }
             var conflict = await _context.Bookings
                .Include(b => b.Event)
-               .AnyAsync(b => b.VenueID == bookings.VenueID &&
+               .AnyAsync(b => b.Id == bookings.Id &&
                               b.Event.EventDate.Date == selectedEvent.EventDate.Date);
             if (conflict)
             {
                 ModelState.AddModelError("", "This venue is already booked for that date.");
-                ViewData["Events"] = _context.Event.ToList();
-                ViewData["Venues"] = _context.Venue.ToList();
-                return View(booking);
+                ViewData["Events"] = _context.Eventss.ToList();
+                ViewData["Venues"] = _context.Venues.ToList();
+                return View(bookings);
             }
 
             if (ModelState.IsValid)
@@ -64,9 +64,9 @@ namespace CLDV6211ASSIGNMENT.Controllers
                 {
                     // If database constraint fails (e.g., unique key violation), show friendly message
                     ModelState.AddModelError("", "This venue is already booked for that date.");
-                    ViewData["Events"] = _context.Event.ToList();
-                    ViewData["Venues"] = _context.Venue.ToList();
-                    return View(booking);
+                    ViewData["Events"] = _context.Eventss.ToList();
+                    ViewData["Venues"] = _context.Venues.ToList();
+                    return View(bookings);
                 }
             }
 
@@ -77,8 +77,8 @@ namespace CLDV6211ASSIGNMENT.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["Events"] = _context.Event.ToList();
-            ViewData["Venues"] = _context.Venue.ToList();
+            ViewData["Events"] = _context.Eventss.ToList();
+            ViewData["Venues"] = _context.Venues.ToList();
             return View(bookings);
         }
     }

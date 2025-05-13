@@ -64,8 +64,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Venue/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcSW5kZXguY3NodG1s
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Venue/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Venue/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcSW5kZXgxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/_ViewImports.cshtml]
