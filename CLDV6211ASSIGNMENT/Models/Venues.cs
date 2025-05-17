@@ -20,7 +20,7 @@ namespace CLDV6211ASSIGNMENT.Models
 
         [NotMapped]
 
-        public IFormFile? ImageFile { get; set; }
+        public IFormFile ImageFile { get; set; }
 
         public List<Bookings> Bookings { get; set; }
 

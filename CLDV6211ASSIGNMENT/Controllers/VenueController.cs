@@ -4,7 +4,8 @@ using Azure.Core;
 using CLDV6211ASSIGNMENT.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs;
 namespace CLDV6211ASSIGNMENT.Controllers
 {
     public class VenueController : Controller
@@ -37,7 +38,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
                 {
                     var blobUrl = await UploadImageToBlobAsync(venue.ImageFile);
 
-                    venue.ImageFile = blobUrl;
+                    venue.ImageUrl = blobUrl;
 
                 }
                 _context.Add(venue);
@@ -69,7 +70,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
                 {
                     var blobUrl = await UploadImageToBlobAsync(venue.ImageFile);
 
-                    venue.ImageFile = blobUrl;
+                    venue.ImageUrl = blobUrl;
 
                 }
                 _context.Update(venue);
@@ -120,15 +121,17 @@ namespace CLDV6211ASSIGNMENT.Controllers
         }
         private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
         {
-
             var connectionString = "DefaultEndpointsProtocol=https;AccountName=poepart2sm;AccountKey=/EIKd+eYtqhYQoH6HjznOThPXfjPT/76dwFeTZ1yAqz6ubQYeItOb47gA7aViM+GqycKCwSweWVm+AStp2KDKw==;EndpointSuffix=core.windows.net";
             var containerName = "poepart2sm";
 
             var blobServiceClient = new BlobServiceClient(connectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
-            var blobClient = containerClient.GetBlobClient(Guid.NewGuid) + Path.GetExtension(imageFile.FileName);
 
-            var blobHttpHeaders = new Azure.Storage.Blobs.Models.blobHttpHeaders
+            // Generate unique filename
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var blobClient = containerClient.GetBlobClient(fileName);
+
+            var blobHttpHeaders = new Azure.Storage.Blobs.Models.BlobHttpHeaders
             {
                 ContentType = imageFile.ContentType
             };
@@ -137,10 +140,12 @@ namespace CLDV6211ASSIGNMENT.Controllers
             {
                 await blobClient.UploadAsync(stream, new Azure.Storage.Blobs.Models.BlobUploadOptions
                 {
-                    HttpHeaders=blobHttpHeaders
+                    HttpHeaders = blobHttpHeaders
                 });
             }
+
             return blobClient.Uri.ToString();
         }
+
     }
-    }
+}

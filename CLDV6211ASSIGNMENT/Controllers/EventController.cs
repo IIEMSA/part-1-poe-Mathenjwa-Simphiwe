@@ -14,7 +14,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var events = await _context.Eventss.Include(e => e.Eventss).ToListAsync();
+            var events = await _context.Eventss.ToListAsync();
             return View(events);
         }
         public IActionResult Create()
@@ -70,7 +70,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
             if (id == null) return NotFound();
 
             var eventItem = await _context.Eventss
-                .Include(x => x.Eventss)
+               
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (eventItem == null) return NotFound();
@@ -104,7 +104,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
             if (id == null) return NotFound();
 
             var eventItem = await _context.Eventss
-                .Include(s => s.Venues)
+               
                 .FirstOrDefaultAsync(s => s.Id == id);
 
             if (eventItem == null) return NotFound();
