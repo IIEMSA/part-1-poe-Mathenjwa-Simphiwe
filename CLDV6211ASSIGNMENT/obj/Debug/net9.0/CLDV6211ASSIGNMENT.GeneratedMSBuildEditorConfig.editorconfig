@@ -32,12 +32,28 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Booking/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Booking/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Booking/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Event/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Event/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Event/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Event/Index.cshtml]
@@ -68,8 +84,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Venue/Index1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcSW5kZXgxLmNzaHRtbA==
+[C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/Venue/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Documents/GitHub/part-1-poe-Mathenjwa-Simphiwe/CLDV6211ASSIGNMENT/Views/_ViewImports.cshtml]
