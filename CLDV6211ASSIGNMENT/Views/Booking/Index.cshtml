@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CLDV6211ASSIGNMENT.Models.Bookings>
+﻿@model IEnumerable<CLDV6211ASSIGNMENT.Models.BookingViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Event)
+                @Html.DisplayNameFor(model => model.EventName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venue)
+                @Html.DisplayNameFor(model => model.VenueName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BookingDate)
@@ -28,10 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Event.EventName)
+                @Html.DisplayFor(modelItem => item.EventName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venue.Location)
+                @Html.DisplayFor(modelItem => item.VenueName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookingDate)

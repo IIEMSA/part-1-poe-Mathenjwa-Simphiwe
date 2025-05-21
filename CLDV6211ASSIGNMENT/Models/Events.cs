@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CLDV6211ASSIGNMENT.Models
 {
     public class Events
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -14,7 +16,8 @@ namespace CLDV6211ASSIGNMENT.Models
 
         public string Description { get; set; }
 
-       
-        public Venues? venues { get; set; }
+        [ForeignKey("Venues")]
+        public int VenueId { get; set; }
+        public Venues? Venue { get; set; }
     }
 }

@@ -99,7 +99,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
             var venue = await _context.Venues.FindAsync(id);
             if (venue == null) return NotFound();
 
-            var hasBookings = await _context.Bookings.AnyAsync(b => b.Id == id);
+            var hasBookings = await _context.Bookings.AnyAsync(b => b.VenueId == id);
             if (hasBookings)
             {
                 TempData["ErrorMessage"] = "Cannot delete venue because it has existing bookings";
@@ -114,7 +114,7 @@ namespace CLDV6211ASSIGNMENT.Controllers
         {
             if (id == null) return NotFound();
 
-            var venue = _context.Venues.FirstOrDefaultAsync(s => s.Id == id);
+            var venue = await _context.Venues.FirstOrDefaultAsync(s => s.Id == id);
             if (venue == null) return NotFound();
 
             return View(venue);

@@ -5,6 +5,7 @@ namespace CLDV6211ASSIGNMENT.Models
 {
     public class Venues
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

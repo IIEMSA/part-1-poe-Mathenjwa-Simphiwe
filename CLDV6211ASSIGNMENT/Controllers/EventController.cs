@@ -1,6 +1,7 @@
 ﻿using CLDV6211ASSIGNMENT.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CLDV6211ASSIGNMENT.Controllers
 {
@@ -12,14 +13,29 @@ namespace CLDV6211ASSIGNMENT.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var events = await _context.Eventss.ToListAsync();
+            Console.WriteLine($"Search String: {searchString}");
+
+            var eventsQuery = _context.Eventss.Include(e => e.Venue).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                Console.WriteLine($"Filtering events by search string: {searchString}");
+
+                eventsQuery = eventsQuery.Where(e => e.EventName.Contains(searchString));
+            }
+
+            var events = await eventsQuery.ToListAsync();
+
+            Console.WriteLine($"Number of events found: {events.Count}");
+
             return View(events);
         }
+
         public IActionResult Create()
         {
-            ViewData["Venues"]= _context.Eventss.ToList();
+            ViewData["Venues"]= _context.Venues.ToList();
             return View();
         }
         [HttpPost]
