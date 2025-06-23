@@ -24,5 +24,7 @@ namespace CLDV6211ASSIGNMENT.Models
         [Required]
         public DateTime BookingDate { get; set; }
 
+        public string Status { get; set; } = "Pending";
+
     }
 }

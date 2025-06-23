@@ -11,6 +11,7 @@ namespace CLDV6211ASSIGNMENT.Models
         public DbSet<Venues> Venues { get; set; }
         public DbSet<Events> Eventss { get; set; }
         public DbSet<Bookings> Bookings { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
 
     }
 }

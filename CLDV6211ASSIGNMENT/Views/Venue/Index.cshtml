@@ -1,26 +1,50 @@
 ﻿@model IEnumerable<CLDV6211ASSIGNMENT.Models.Venues>
 
-
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="container">
     <h1 class="my-4 text-center text-success">Venue Management</h1>
 
-    <div class="mb-3">
-        <a class="btn btn-success" asp-action="Create">Create New Venue</a>
-    </div>
+    <!-- Filter Form -->
+    <form asp-action="Search" method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <select name="eventType" class="form-select">
+                <option value="">All Event Types</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Conference">Conference</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
 
+        <div class="col-md-3 form-check">
+            <input type="checkbox" name="isAvailable" value="true" class="form-check-input" id="availableCheck" />
+            <label class="form-check-label" for="availableCheck">Show Available Only</label>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+        <div class="col-md-3 text-end">
+            <a class="btn btn-success" asp-action="Create">Create New Venue</a>
+        </div>
+    </form>
+
+    <!-- Table -->
     <div class="card shadow-sm">
         <div class="card-body">
             <table class="table table-bordered table-hover table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Id)</th>
-                        <th>@Html.DisplayNameFor(model => model.VenueName)</th>
-                        <th>@Html.DisplayNameFor(model => model.Location)</th>
-                        <th>@Html.DisplayNameFor(model => model.Capacity)</th>
-                       
+                        <th>ID</th>
+                        <th>Venue Name</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                        <th>Event Type</th>
+                        <th>Availability</th>
                         <th>Venue Image</th>
                         <th>Actions</th>
                     </tr>
@@ -29,11 +53,21 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.Id)</th>
-                            <td>@Html.DisplayFor(modelItem => item.VenueName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Location)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Capacity)</td>
-                            
+                            <td>@item.Id</td>
+                            <td>@item.VenueName</td>
+                            <td>@item.Location</td>
+                            <td>@item.Capacity</td>
+                            <td>@item.EventType?.name ?? "N/A"</td>
+                            <td>
+                                @if (item.IsAvailable)
+                                {
+                                    <span class="badge bg-success">Available</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Not Available</span>
+                                }
+                            </td>
                             <td>
                                 @if (!string.IsNullOrEmpty(item.ImageUrl))
                                 {

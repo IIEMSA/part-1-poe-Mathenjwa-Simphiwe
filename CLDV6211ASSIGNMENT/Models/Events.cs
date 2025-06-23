@@ -19,5 +19,7 @@ namespace CLDV6211ASSIGNMENT.Models
         [ForeignKey("Venues")]
         public int VenueId { get; set; }
         public Venues? Venue { get; set; }
+
+       
     }
 }

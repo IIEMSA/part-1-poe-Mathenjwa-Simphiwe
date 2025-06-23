@@ -25,5 +25,12 @@ namespace CLDV6211ASSIGNMENT.Models
 
         public List<Bookings> Bookings { get; set; }
 
+        [ForeignKey("EventTypeId")]
+        public int? EventTypeId { get; set; }
+        public EventType EventType { get; set; }
+
+        [Required]
+        public bool IsAvailable { get; set; }
+
     }
 }

@@ -147,5 +147,22 @@ namespace CLDV6211ASSIGNMENT.Controllers
             return blobClient.Uri.ToString();
         }
 
+        public async Task<IActionResult> Search(string eventType, bool? isAvailable)
+        {
+            var venues = _context.Venues.Include(v => v.EventType).AsQueryable();
+
+            if (!string.IsNullOrEmpty(eventType))
+            {
+                venues = venues.Where(v => v.EventType.name == eventType);
+            }
+
+            if (isAvailable.HasValue)
+            {
+                venues = venues.Where(v => v.IsAvailable == isAvailable.Value);
+            }
+
+            return View("Index", await venues.ToListAsync());
+        }
+
     }
 }
