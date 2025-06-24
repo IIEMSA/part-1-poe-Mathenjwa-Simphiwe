@@ -25,8 +25,8 @@ namespace CLDV6211ASSIGNMENT.Models
 
         public List<Bookings> Bookings { get; set; }
 
-        [ForeignKey("EventTypeId")]
-        public int? EventTypeId { get; set; }
+        [ForeignKey("EventTypeID")]
+        public int? EventTypeID{ get; set; }
         public EventType EventType { get; set; }
 
         [Required]

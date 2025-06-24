@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
 }
+
 <h1>Edit Venue</h1>
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
@@ -30,6 +31,21 @@
         <span asp-validation-for="ImageFile" class="text-danger"></span>
     </div>
 
+    <!-- Event Type Dropdown -->
+    <div class="form-group">
+        <label asp-for="EventTypeID" class="control-label"></label>
+        <select asp-for="EventTypeID" class="form-control" asp-items="ViewBag.EventTypeList">
+            <option value="">-- Select Event Type --</option>
+        </select>
+        <span asp-validation-for="EventTypeID" class="text-danger"></span>
+    </div>
+
+    <!-- IsAvailable Checkbox -->
+    <div class="form-check mb-3">
+        <input asp-for="IsAvailable" class="form-check-input" />
+        <label asp-for="IsAvailable" class="form-check-label">Available for Booking</label>
+    </div>
+
     <input type="hidden" asp-for="Id" />
 
     <button type="submit" class="btn btn-primary">Save</button>
@@ -41,4 +57,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-

@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using CLDV6211ASSIGNMENT.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,14 +10,21 @@ namespace CLDV6211ASSIGNMENT
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Database Context
             builder.Services.AddDbContext<ApplicationDBcontext>(options =>
-               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            // Blob Storage Service
+            builder.Services.AddSingleton(provider =>
+            {
+                var config = provider.GetRequiredService<IConfiguration>();
+                return new BlobServiceClient(config["AzureBlobStorage:ConnectionString"]);
+            });
 
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

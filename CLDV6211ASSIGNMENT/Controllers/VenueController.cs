@@ -6,15 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs;
+using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace CLDV6211ASSIGNMENT.Controllers
 {
     public class VenueController : Controller
     {
+        
         private readonly ApplicationDBcontext _context;
-        public VenueController(ApplicationDBcontext context)
+        private readonly IConfiguration _configuration;
+
+        public VenueController(ApplicationDBcontext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
+
 
         public async Task<IActionResult> Index()
         {
@@ -32,6 +39,9 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
         public async Task<IActionResult> Create(Venues venue)
         {
+            ViewBag.EventTypeList = new SelectList(_context.EventTypes, "EventTypeID", "Name");
+          
+
             if (ModelState.IsValid)
             {
                 if (venue.ImageFile != null)
@@ -54,6 +64,8 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
             var venue = await _context.Venues.FindAsync(id);
             if (venue == null) return NotFound();
+
+            ViewBag.EventTypeList = new SelectList(_context.EventTypes, "EventTypeID", "Name", venue.EventTypeID);
             return View(venue);
 
         }
@@ -121,8 +133,8 @@ namespace CLDV6211ASSIGNMENT.Controllers
         }
         private async Task<string> UploadImageToBlobAsync(IFormFile imageFile)
         {
-            var connectionString = "DefaultEndpointsProtocol=https;AccountName=poepart2sm;AccountKey=/EIKd+eYtqhYQoH6HjznOThPXfjPT/76dwFeTZ1yAqz6ubQYeItOb47gA7aViM+GqycKCwSweWVm+AStp2KDKw==;EndpointSuffix=core.windows.net";
-            var containerName = "poepart2sm";
+            var connectionString = _configuration["AzureBlobStorage:ConnectionString"];
+            var containerName = _configuration["AzureBlobStorage:ContainerName"];
 
             var blobServiceClient = new BlobServiceClient(connectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
@@ -163,6 +175,10 @@ namespace CLDV6211ASSIGNMENT.Controllers
 
             return View("Index", await venues.ToListAsync());
         }
+        
+
+        
+
 
     }
 }
